@@ -15,7 +15,17 @@ export default function ScryfallTest() {
       <ul>
         {cards.map(card => (
           <li key={card.id}>
-            <img src={card.image_uris.small} alt={card.name} />
+            {cards.map(card => (
+  <li key={card.id}>
+    {card.image_uris?.small ? (
+      <img src={card.image_uris.small} alt={card.name} />
+    ) : (
+      <p>No image available</p>
+    )}
+    <p>{card.name}</p>
+  </li>
+))}
+
             <p>{card.name}</p>
           </li>
         ))}
