@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import Sidebar from './components/Sidebar';
+import React, { useState } from 'react';
 import GameSelector from './components/GameSelector';
+import Sidebar from './components/Sidebar';
+import DecksPage from './components/DecksPage';
 
 export default function App() {
   const [selectedGame, setSelectedGame] = useState('mtg');
@@ -11,9 +12,7 @@ export default function App() {
       <div style={{ display: 'flex', flexGrow: 1 }}>
         <Sidebar />
         <div style={{ flexGrow: 1, padding: '2rem' }}>
-          <h1>🎴 Welcome to TCG Organizer</h1>
-          <p>Currently viewing: <strong>{selectedGame.toUpperCase()}</strong></p>
-          <p>Start exploring your cards and building decks!</p>
+          <DecksPage selectedGame={selectedGame} />
         </div>
       </div>
     </div>
