@@ -1,23 +1,21 @@
-import './App.css';
+import { useState } from 'react';
+import Sidebar from './components/Sidebar';
+import GameSelector from './components/GameSelector';
 
 export default function App() {
+  const [selectedGame, setSelectedGame] = useState('mtg');
+
   return (
-    <div className="app">
-      <aside className="sidebar">
-        <div className="logo">TCG Organizer</div>
-        <nav>
-          <ul>
-            <li><a href="#">Browse</a></li>
-            <li><a href="#">Decks</a></li>
-            <li><a href="#">Collections</a></li>
-            <li><a href="#">Settings</a></li>
-          </ul>
-        </nav>
-      </aside>
-      <main className="content">
-        <h1>Welcome to TCG Organizer</h1>
-        <p>Start exploring your cards and building decks!</p>
-      </main>
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+      <GameSelector selectedGame={selectedGame} setSelectedGame={setSelectedGame} />
+      <div style={{ display: 'flex', flexGrow: 1 }}>
+        <Sidebar />
+        <div style={{ flexGrow: 1, padding: '2rem' }}>
+          <h1>🎴 Welcome to TCG Organizer</h1>
+          <p>Currently viewing: <strong>{selectedGame.toUpperCase()}</strong></p>
+          <p>Start exploring your cards and building decks!</p>
+        </div>
+      </div>
     </div>
   );
 }
